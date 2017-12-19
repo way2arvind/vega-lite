@@ -23,7 +23,10 @@
     },
     {
       "data": {
-        "url": "data/us-state-capitals.json"
+        "url": "data/airports.csv",
+        "format": {
+          "type": "csv"
+        }
       },
       "projection": {
         "type": "albersUsa"
@@ -31,11 +34,11 @@
       "mark": "text",
       "encoding": {
         "x": {
-          "field": "lon",
+          "field": "longitude",
           "type": "longitude"
         },
         "y": {
-          "field": "lat",
+          "field": "latitude",
           "type": "latitude"
         },
         "text": {"field": "city", "type": "nominal"}
