@@ -1,6 +1,7 @@
 import {isArray} from 'vega-util';
 import {NONPOSITION_SCALE_CHANNELS} from '../../channel';
-import {ChannelDef, FieldDef, getFieldDef, isValueDef} from '../../fielddef';
+import {ChannelDef, FieldDef, getFieldDef, isConditionalSelection, isValueDef} from '../../fielddef';
+import {expression} from '../../filter';
 import * as log from '../../log';
 import {MarkDef} from '../../mark';
 import * as util from '../../util';
@@ -84,8 +85,9 @@ function wrapCondition(
     const conditions = isArray(condition) ? condition : [condition];
     const vgConditions = conditions.map((c) => {
       const conditionValueRef = refFn(c);
+      const test = isConditionalSelection(c) ? predicate(model, c.selection) : expression(model, c.test);
       return {
-        test: predicate(model, c.selection),
+        test,
         ...conditionValueRef
       };
     });

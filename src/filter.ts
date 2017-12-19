@@ -7,6 +7,7 @@ import {LogicalOperand} from './logical';
 import {fieldExpr as timeUnitFieldExpr, getLocalTimeUnit, isLocalSingleTimeUnit, isUtcSingleTimeUnit, normalizeTimeUnit, TimeUnit} from './timeunit';
 import {isArray, isString, logicalExpr} from './util';
 
+// TODO: rename Filter and *Filter to Predicate and *Predicate
 
 export type Filter =
   // FieldFilter (but we don't type FieldFilter here so the schema has no nesting
